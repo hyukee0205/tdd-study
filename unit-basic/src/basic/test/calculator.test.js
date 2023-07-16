@@ -6,14 +6,12 @@ describe('Calculator', () => {
     cal = new Calculator();
   });
 
-
   it('inits with 0', () => {
     expect(cal.value).toBe(0);
   });
 
   it('sets', () => {
     cal.set(9);
-
     expect(cal.value).toBe(9);
   });
 
@@ -25,50 +23,45 @@ describe('Calculator', () => {
 
   it('adds', () => {
     cal.set(1);
-    cal.add(5);
-    expect(cal.value).toBe(6);
+    cal.add(2);
+
+    expect(cal.value).toBe(3);
   });
 
-  // it('add should throw an error if value is greater than 100', () => {
-  //   expect(() => {
-  //     cal.add(101);
-  //   }).toThrow('value can not be grater than 100');
-  // });
+  it('add should throw an error if value is greater than 100', () => {
+    expect(() => {
+      cal.add(101);
+    }).toThrow('Value can not be greater than 100');
+  });
 
-
-
-  it('subtract', () => {
+  it('subtracts', () => {
     cal.subtract(1);
+
     expect(cal.value).toBe(-1);
-  })
+  });
 
-  it('multiply', () => {
-    cal.set(1);
-    cal.multiply(5);
-    expect(cal.value).toBe(5);
-  })
+  it('multiplies', () => {
+    cal.set(5);
+    cal.multiply(4);
 
+    expect(cal.value).toBe(20);
+  });
 
-  
   describe('divides', () => {
-    it('0/0 === NaN', () => {
+    it('0 / 0 === NaN', () => {
       cal.divide(0);
       expect(cal.value).toBe(NaN);
-    })
-
-    it('1/0 === Infinity', () => {
+    });
+    it('1 / 0 === Infinity', () => {
       cal.set(1);
       cal.divide(0);
       expect(cal.value).toBe(Infinity);
-    })
-
-    it('4/4 === Infinity', () => {
+    });
+    it('4 / 4 === 1', () => {
       cal.set(4);
       cal.divide(4);
+
       expect(cal.value).toBe(1);
-    })
-  })
-
-
-
-})
+    });
+  });
+});
